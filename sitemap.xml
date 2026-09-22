@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sustituir TU-DOMINIO-AQUI por el dominio real una vez publicada la web -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://TU-DOMINIO-AQUI/index.html</loc>
+  </url>
+  <url>
+    <loc>https://TU-DOMINIO-AQUI/historia.html</loc>
+  </url>
+  <url>
+    <loc>https://TU-DOMINIO-AQUI/horarios.html</loc>
+  </url>
+  <url>
+    <loc>https://TU-DOMINIO-AQUI/competiciones.html</loc>
+  </url>
+  <url>
+    <loc>https://TU-DOMINIO-AQUI/fotos.html</loc>
+  </url>
+  <url>
+    <loc>https://TU-DOMINIO-AQUI/licencias.html</loc>
+  </url>
+</urlset>
