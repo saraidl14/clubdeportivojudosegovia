@@ -23,6 +23,23 @@
     }, 150);
   }
 
+  var upcomingList = document.getElementById('events-upcoming');
+  var pastList = document.getElementById('events-past');
+  var pastWrap = document.getElementById('events-past-wrap');
+  if (upcomingList && pastList && pastWrap) {
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    var finished = [];
+    upcomingList.querySelectorAll('.event-card[data-date]').forEach(function (card) {
+      var p = card.getAttribute('data-date').split('-');
+      var lastDay = new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
+      if (lastDay < today) finished.push({ card: card, lastDay: lastDay });
+    });
+    finished.sort(function (a, b) { return b.lastDay - a.lastDay; });
+    finished.forEach(function (item) { pastList.appendChild(item.card); });
+    if (finished.length) pastWrap.hidden = false;
+  }
+
   var resultsToggle = document.getElementById('results-toggle');
   if (resultsToggle) {
     resultsToggle.addEventListener('click', function () {

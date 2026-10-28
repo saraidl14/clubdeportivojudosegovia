@@ -762,6 +762,9 @@ section { padding: clamp(3.5rem, 8vw, 6.5rem) 0; }
 .event-card h3 { font-size: 1.05rem; margin-bottom: .3rem; }
 .event-card p { margin-bottom: 0; color: #555; font-size: .9rem; }
 .event-list { display: grid; gap: 1.2rem; }
+.past-events { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+.past-events h3 { font-size: 1.3rem; margin-bottom: 1.2rem; }
+.past-events .event-card { opacity: .72; }
 
 .callout {
   border: 1px dashed rgba(255,255,255,.3);
