@@ -40,6 +40,45 @@
     if (finished.length) pastWrap.hidden = false;
   }
 
+  var searchInput = document.getElementById('events-search');
+  var chipBar = document.querySelector('.event-filter__chips');
+  if (searchInput && chipBar) {
+    var activeFilter = 'all';
+    var emptyMsg = document.getElementById('events-empty');
+    var norm = function (t) {
+      return t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    };
+    var applyFilter = function () {
+      var q = norm(searchInput.value.trim());
+      var visibleUpcoming = 0;
+      var visiblePast = 0;
+      document.querySelectorAll('#events-upcoming .event-card, #events-past .event-card').forEach(function (card) {
+        var tags = (card.getAttribute('data-tags') || '').split(' ');
+        var tagOk = activeFilter === 'all' || tags.indexOf(activeFilter) !== -1;
+        var textOk = !q || norm(card.textContent).indexOf(q) !== -1;
+        var show = tagOk && textOk;
+        card.classList.toggle('is-filtered-out', !show);
+        if (show) {
+          if (card.parentNode.id === 'events-past') visiblePast++;
+          else visibleUpcoming++;
+        }
+      });
+      var pastBlock = document.getElementById('events-past-wrap');
+      if (pastBlock) pastBlock.classList.toggle('is-filtered-out', visiblePast === 0);
+      if (emptyMsg) emptyMsg.hidden = visibleUpcoming + visiblePast > 0;
+    };
+    chipBar.addEventListener('click', function (e) {
+      var btn = e.target.closest('button[data-filter]');
+      if (!btn) return;
+      activeFilter = btn.getAttribute('data-filter');
+      chipBar.querySelectorAll('button').forEach(function (b) {
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+      applyFilter();
+    });
+    searchInput.addEventListener('input', applyFilter);
+  }
+
   var resultsToggle = document.getElementById('results-toggle');
   if (resultsToggle) {
     resultsToggle.addEventListener('click', function () {
