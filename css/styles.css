@@ -721,6 +721,33 @@ section { padding: clamp(3.5rem, 8vw, 6.5rem) 0; }
 }
 .schedule-table tbody tr:hover { background: rgba(0,0,0,.02); }
 
+.license-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 2rem 1.6rem;
+  align-items: start;
+}
+.license-card { margin: 0; }
+.license-card--featured {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 780px;
+  justify-self: center;
+}
+.license-card--featured figcaption { font-size: .95rem; }
+.license-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  background: var(--white);
+}
+.license-card figcaption {
+  margin-top: .8rem;
+  font-size: .88rem;
+  color: rgba(255,255,255,.75);
+  text-align: center;
+}
+
 /* ==========================================================================
     Competiciones
    ========================================================================== */
