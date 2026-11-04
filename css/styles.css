@@ -832,6 +832,22 @@ section { padding: clamp(3.5rem, 8vw, 6.5rem) 0; }
 .chip:focus-visible { outline: 2px solid var(--celeste); outline-offset: 2px; }
 .event-card.is-filtered-out, .past-events.is-filtered-out { display: none; }
 .events-empty { color: #8a8677; margin: 1.2rem 0 0; }
+.event-card p.event-place {
+  margin: 0 0 .25rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--celeste-dark);
+}
+.event-details {
+  list-style: none;
+  margin: .8rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: .35rem;
+  font-size: .88rem;
+  color: #555;
+}
+.event-details a { color: var(--celeste-dark); text-decoration: underline; }
 .past-events { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
 .past-events h3 { font-size: 1.3rem; margin-bottom: 1.2rem; }
 .past-events .event-card { opacity: .72; }
