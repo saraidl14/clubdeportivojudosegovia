@@ -29,11 +29,14 @@
   if (upcomingList && pastList && pastWrap) {
     var today = new Date();
     today.setHours(0, 0, 0, 0);
+    var cutoff = new Date(today);
+    cutoff.setMonth(cutoff.getMonth() - 18);
     var finished = [];
     upcomingList.querySelectorAll('.event-card[data-date]').forEach(function (card) {
       var p = card.getAttribute('data-date').split('-');
       var lastDay = new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
-      if (lastDay < today) finished.push({ card: card, lastDay: lastDay });
+      if (lastDay < cutoff) card.remove();
+      else if (lastDay < today) finished.push({ card: card, lastDay: lastDay });
     });
     finished.sort(function (a, b) { return b.lastDay - a.lastDay; });
     finished.forEach(function (item) { pastList.appendChild(item.card); });
